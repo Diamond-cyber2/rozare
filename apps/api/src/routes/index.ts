@@ -3,6 +3,8 @@ import { IndexController } from '../controllers';
 import { authenticate } from '../middlewares/auth';
 import jwt from 'jsonwebtoken';
 import { LeadsController } from '../controllers/leads';
+import { ProductsController } from '../controllers/products';
+import { OrdersController } from '../controllers/orders';
 
 const indexController = new IndexController();
 
@@ -40,4 +42,20 @@ export const setRoutes = (app: Express) => {
     });
 
     app.use('/admin', auth);
+
+    // Products routes (protected)
+    const products = new ProductsController();
+    const p = Router();
+    p.get('/', authenticate, products.list);
+    p.post('/', authenticate, products.create);
+    p.put('/:id', authenticate, products.update);
+    p.delete('/:id', authenticate, products.remove);
+    app.use('/products', p);
+
+    // Orders routes (protected)
+    const orders = new OrdersController();
+    const o = Router();
+    o.get('/', authenticate, orders.list);
+    o.post('/', authenticate, orders.create);
+    app.use('/orders', o);
 };

@@ -144,3 +144,5 @@ html[dir="rtl"] .form-row { direction: rtl; }
 .mt-12 { margin-top: 12px; }
 .w-full { width: 100%; }
 .h-fit { height: fit-content; }
+.row-between { display:flex; justify-content: space-between; align-items: center; }
+.fw-700 { font-weight: 700; }
