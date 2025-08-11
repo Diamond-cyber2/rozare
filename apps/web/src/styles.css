@@ -137,3 +137,10 @@ html[dir="rtl"] .form-row { direction: rtl; }
 .gap-12 { gap: 12px; }
 .mt-16 { margin-top: 16px; }
 .pad-24 { padding: 24px 0; }
+.grid-2 { display: grid; grid-template-columns: 220px 1fr; gap: 16px; }
+.sticky { position: sticky; top: 76px; }
+.col { display: flex; flex-direction: column; }
+.gap-10 { gap: 10px; }
+.mt-12 { margin-top: 12px; }
+.w-full { width: 100%; }
+.h-fit { height: fit-content; }
