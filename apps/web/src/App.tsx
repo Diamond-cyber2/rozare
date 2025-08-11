@@ -12,8 +12,6 @@ const App: React.FC = () => {
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-        document.body.style.background = dark ? '#0b0d12' : '#ffffff';
-        document.body.style.color = dark ? '#f1f5f9' : '#0b0d12';
     }, [dark]);
 
     return (
