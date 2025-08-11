@@ -10,8 +10,8 @@ const Header: React.FC<Props> = ({ onToggleTheme, dark }) => {
                 <nav aria-label="Main">
                     <ul className="nav-list">
                         <li><a className="nav-link" href="/">Home</a></li>
-                        <li><a className="nav-link" href="#features">Features</a></li>
-                        <li><a className="nav-link" href="#contact">Contact</a></li>
+                        <li><a className="nav-link" href="/landing#features">Features</a></li>
+                        <li><a className="nav-link" href="/landing#contact">Contact</a></li>
                     </ul>
                 </nav>
         <button className="btn btn-outline theme-toggle" onClick={onToggleTheme} aria-label="Toggle theme">

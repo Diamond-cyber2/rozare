@@ -130,3 +130,10 @@ html[dir="rtl"] .form-row { direction: rtl; }
 
 /* utilities */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* tiny utilities used in Dashboard */
+.center { text-align: center; }
+.row-center { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
+.gap-12 { gap: 12px; }
+.mt-16 { margin-top: 16px; }
+.pad-24 { padding: 24px 0; }
