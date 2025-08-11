@@ -18,6 +18,7 @@ type Product = {
   stock: number;
   active: boolean;
   createdAt: string;
+  imageUrl?: string;
 };
 
 export class ProductsController {
@@ -33,7 +34,7 @@ export class ProductsController {
   };
 
   create = (req: Request, res: Response) => {
-    const { name, price, stock, active } = req.body || {};
+    const { name, price, stock, active, imageUrl } = req.body || {};
     if (!name || typeof name !== 'string') return res.status(400).json({ message: 'name required' });
     const p = Number(price);
     const s = Number(stock ?? 0);
@@ -42,7 +43,7 @@ export class ProductsController {
       ensure();
       const raw = fs.readFileSync(file, 'utf-8');
       const items: Product[] = JSON.parse(raw);
-      const prod: Product = { id: crypto.randomUUID(), name, price: isNaN(p) ? 0 : p, stock: isNaN(s) ? 0 : s, active: a, createdAt: new Date().toISOString() };
+  const prod: Product = { id: crypto.randomUUID(), name, price: isNaN(p) ? 0 : p, stock: isNaN(s) ? 0 : s, active: a, createdAt: new Date().toISOString(), imageUrl };
       items.push(prod);
       fs.writeFileSync(file, JSON.stringify(items, null, 2));
       res.status(201).json({ product: prod });

@@ -146,3 +146,4 @@ html[dir="rtl"] .form-row { direction: rtl; }
 .h-fit { height: fit-content; }
 .row-between { display:flex; justify-content: space-between; align-items: center; }
 .fw-700 { font-weight: 700; }
+.thumb { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; }

@@ -5,6 +5,8 @@ import jwt from 'jsonwebtoken';
 import { LeadsController } from '../controllers/leads';
 import { ProductsController } from '../controllers/products';
 import { OrdersController } from '../controllers/orders';
+import { upload } from '../utils/uploads';
+import { SettingsController } from '../controllers/settings';
 
 const indexController = new IndexController();
 
@@ -48,6 +50,11 @@ export const setRoutes = (app: Express) => {
     const p = Router();
     p.get('/', authenticate, products.list);
     p.post('/', authenticate, products.create);
+    p.post('/upload', authenticate, upload.single('image'), (req, res) => {
+        const file = (req as any).file;
+        if (!file) return res.status(400).json({ message: 'No file' });
+        return res.status(201).json({ url: `/uploads/${file.filename}` });
+    });
     p.put('/:id', authenticate, products.update);
     p.delete('/:id', authenticate, products.remove);
     app.use('/products', p);
@@ -58,4 +65,11 @@ export const setRoutes = (app: Express) => {
     o.get('/', authenticate, orders.list);
     o.post('/', authenticate, orders.create);
     app.use('/orders', o);
+
+    // Settings routes (protected)
+    const settings = new SettingsController();
+    const s = Router();
+    s.get('/payment', authenticate, settings.getPayment);
+    s.post('/payment', authenticate, settings.setPayment);
+    app.use('/settings', s);
 };
