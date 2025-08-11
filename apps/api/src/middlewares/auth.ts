@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
 
 export const authenticate = (req, res, next) => {
     const authHeader = req.headers['authorization'];
@@ -17,3 +18,11 @@ export const authenticate = (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 };
+
+export function requireAuth(
+  _req: Request,
+  _res: Response,
+  next: NextFunction
+): void {
+  next();
+}

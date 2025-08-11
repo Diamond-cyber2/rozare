@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { setRoutes } from './routes';
 
@@ -9,6 +9,9 @@ const app = express();
 app.use(express.json());
 // Enable CORS for local dev and general usage
 app.use(cors({ origin: true }));
+
+app.get('/health', (_req: Request, res: Response) => res.json({ ok: true }));
+app.get('/', (_req: Request, res: Response) => res.send('Welcome to the API!'));
 
 // Set up routes
 setRoutes(app);
