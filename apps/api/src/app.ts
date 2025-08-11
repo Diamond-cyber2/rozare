@@ -8,7 +8,8 @@ const app = express();
 // Middleware
 app.use(express.json());
 // Enable CORS for local dev and general usage
-app.use(cors({ origin: true }));
+const origins = process.env.CORS_ORIGIN?.split(',').map(s => s.trim());
+app.use(cors(origins ? { origin: origins } : undefined));
 
 app.get('/health', (_req: Request, res: Response) => res.json({ ok: true }));
 app.get('/', (_req: Request, res: Response) => res.send('Welcome to the API!'));
