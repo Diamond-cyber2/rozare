@@ -1,0 +1,22 @@
+{
+  "name": "my-saas-app-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vite": "^2.6.4"
+  },
+  "devDependencies": {
+  "vitest": "^0.3.0",
+  "typescript": "^4.4.3",
+  "@vitejs/plugin-react": "^1.3.2",
+  "@types/react": "^17.0.24",
+  "@types/react-dom": "^17.0.9"
+  }
+}
