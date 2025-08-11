@@ -2,21 +2,25 @@
   "name": "my-saas-app-web",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "prebuild": "node -v && npm -v",
+    "build": "vite build --logLevel info",
     "test": "vitest"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
-    "@vitejs/plugin-react": "^1.3.2",
-    "typescript": "^4.9.5",
-    "vite": "^7.1.1",
-    "vitest": "^0.3.0"
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.3.1",
+    "typescript": "4.9.5",
+    "vite": "5.4.8",
+    "vitest": "1.6.0"
   }
 }
