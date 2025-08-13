@@ -53,6 +53,7 @@ const Landing: React.FC = () => {
   return (
     <section className="hero">
       <div className="container">
+        <img src="/brand/hero1.jpg" alt="Rozare brand" style={{maxWidth:'320px',margin:'0 auto 24px',display:'block',borderRadius:'18px',boxShadow:'0 2px 16px #0002'}} />
         <h2 className="hero-title">Rozare — منصّتك لصناعة متاجر الدروبشيبنغ</h2>
         <p className="hero-sub">إدارة المتاجر، المنتجات، الطلبات، المحفظة، والنقاط — كل ذلك من لوحة واحدة.</p>
         <div className="countdown" role="timer" aria-live="polite">

@@ -6,6 +6,7 @@ const Settings: React.FC = () => {
   const [publicKey, setPublicKey] = useState('');
   const [secretKey, setSecretKey] = useState('');
   const [msg, setMsg] = useState('');
+  const [testResult, setTestResult] = useState('');
 
   useEffect(() => {
     (async () => {
@@ -27,6 +28,16 @@ const Settings: React.FC = () => {
     } catch {}
   };
 
+  const testStripe = async () => {
+    setTestResult('');
+    try {
+      // Placeholder: simulate test
+      if (!publicKey || !secretKey) throw new Error('يرجى إدخال المفاتيح');
+      setTestResult('تم الاتصال بنجاح (محاكاة)');
+    } catch (e: any) {
+      setTestResult(e.message || 'فشل الاتصال');
+    }
+  };
   return (
     <div>
       <h2 className="hero-title">الإعدادات</h2>
@@ -44,6 +55,13 @@ const Settings: React.FC = () => {
         </form>
         {msg && <div className="status success">{msg}</div>}
       </div>
+        <div className="mt-16">
+          <button className="btn" onClick={testStripe} type="button">اختبار الاتصال بـ Stripe</button>
+          {testResult && <div className="status mt-8">{testResult}</div>}
+          <div className="mt-12 muted-note">
+            <b>ملاحظة:</b> استخدم مفاتيح وضع الاختبار من Stripe. سيتم تفعيل الدفع الحقيقي بعد ربط حسابك.
+          </div>
+        </div>
     </div>
   );
 };

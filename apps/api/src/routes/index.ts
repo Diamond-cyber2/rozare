@@ -6,7 +6,7 @@ import { LeadsController } from '../controllers/leads';
 import { ProductsController } from '../controllers/products';
 import { OrdersController } from '../controllers/orders';
 import { upload } from '../utils/uploads';
-import { SettingsController } from '../controllers/settings';
+import { SettingsController, createCheckoutSession } from '../controllers/settings';
 
 const indexController = new IndexController();
 
@@ -64,6 +64,8 @@ export const setRoutes = (app: Express) => {
     const o = Router();
     o.get('/', authenticate, orders.list);
     o.post('/', authenticate, orders.create);
+    o.put('/:id', authenticate, orders.update);
+    o.post('/:id/paid', authenticate, orders.markPaid);
     app.use('/orders', o);
 
     // Settings routes (protected)
@@ -71,5 +73,6 @@ export const setRoutes = (app: Express) => {
     const s = Router();
     s.get('/payment', authenticate, settings.getPayment);
     s.post('/payment', authenticate, settings.setPayment);
+    s.post('/checkout', createCheckoutSession);
     app.use('/settings', s);
 };

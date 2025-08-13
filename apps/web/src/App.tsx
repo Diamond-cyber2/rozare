@@ -11,6 +11,7 @@ import Addons from './pages/Addons';
 import Themes from './pages/Themes';
 import Settings from './pages/Settings';
 import Layout from './components/Layout';
+import { ToastProvider } from './components/Toasts';
 
 const App: React.FC = () => {
     const [dark, setDark] = useState(false);
@@ -25,7 +26,7 @@ const App: React.FC = () => {
     }, [dark]);
 
     return (
-        <div>
+        <ToastProvider>
             <Header onToggleTheme={() => setDark((d) => !d)} dark={dark} />
                         <Routes>
                                 <Route path="/" element={<Login />} />
@@ -41,7 +42,7 @@ const App: React.FC = () => {
                                 <Route path="/landing" element={<Home dark={dark} />} />
                                 <Route path="*" element={<Navigate to="/" replace />} />
                         </Routes>
-        </div>
+        </ToastProvider>
     );
 };
 
